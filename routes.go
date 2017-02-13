@@ -23,7 +23,7 @@ var db *sql.DB
 var err error
 
 func NewRouter() *mux.Router {
-	db, err = sql.Open("mysql", "psanker:prefontainetqcio123@/basketball")
+	db, err = sql.Open("mysql", "root:prefontainetqcio123@/basketball")
 	err = db.Ping()
 
 	if err != nil {
@@ -47,5 +47,11 @@ var routes = Routes{
 		"GET",
 		"/",
 		Index,
-	}
+	},
+	Route {
+		"searchPlayer",
+		"GET",
+		"/search/player/{query}",
+		searchPlayer,
+	},
 }
